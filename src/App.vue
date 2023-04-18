@@ -1,18 +1,9 @@
 <template>
   <MainHeader></MainHeader>
   <div id="game">
-    <section id="monster" class="container">
-      <h2>Monster Health</h2>
-      <div class="healthbar">
-        <div class="healthbar__value"></div>
-      </div>
-    </section>
-    <section id="player" class="container">
-      <h2>Your Health</h2>
-      <div class="healthbar">
-        <div class="healthbar__value"></div>
-      </div>
-    </section>
+    <health-bar :health="monsterHealth" title="Monster Health"></health-bar>
+    <health-bar :health="playerHealth" title="Your Health"></health-bar>
+  
     <section id="controls">
       <button>ATTACK</button>
       <button>SPECIAL ATTACK</button>
@@ -27,11 +18,19 @@
 </template>
 
 <script>
+import HealthBar from './components/HealthBar.vue';
 import MainHeader from './components/MainHeader.vue';
 
 export default {
   components: {
-    MainHeader
+    MainHeader,
+    HealthBar
+  },
+  data() {
+    return {
+      monsterHealth: 100,
+      playerHealth: 60,
+    };
   }
 }
 </script>
